@@ -3,10 +3,14 @@ __email__ = 'jv.vanheerden@gmail.com'
 
 
 
-from Thread import Thread
+# from Thread import Thread
 
 import asyncio
 import time
+
+
+from ..monitoring.Logging import setup_logging
+
 
 class Message:
 
@@ -14,8 +18,11 @@ class Message:
         """
         a
         """
-        raise NotImplementedError("Class is not created yet")
+    
+        self.read = False
+        self.recipients = {}
 
+        self.logger = setup_logging()
 
 
 
@@ -27,19 +34,22 @@ class Message:
 
 
 
-    async def set_recipient(self, recipient):
+    def add_recipient(self, recipient):
+        """
 
-        self.recipient = recipient
+        """
+        self.logger.debug(f"Adding recipient {recipient.name} to message {self.name}")
+        self.recipients[recipient.name] = recipient
         
     
     
-    async def add_thread(self, thread: Thread) -> "Message":
-        """
-        a
-        """
-        raise NotImplementedError("Class is not created yet")
+    # async def add_thread(self, thread: Thread) -> "Message":
+    #     """
+    #     a
+    #     """
+    #     raise NotImplementedError("Class is not created yet")
     
-        return self
+    #     return self
     
 
 

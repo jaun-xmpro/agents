@@ -6,6 +6,10 @@ import threading
 import asyncio
 import time
 
+from ..communication.Message import Message
+from ..communication.MessageQueueHandler import MessageQueueHandler
+
+
 
 class MessageQueue(threading.Thread):
 
@@ -16,6 +20,8 @@ class MessageQueue(threading.Thread):
         super().__init__()
         
         self.message_queue_handlers: dict = {}
+
+        self.message_queue = asyncio.Queue()
 
 
 

@@ -7,6 +7,9 @@ import asyncio
 import time
 
 
+from ..communication.Message import Message
+
+
 class MessageQueueHandler(threading.Thread):
 
     def __init__(self) -> None:
@@ -18,7 +21,7 @@ class MessageQueueHandler(threading.Thread):
 
 
 
-    async def register(self, consumer: "Consumer") -> "MessageQueueHandler":
+    async def register(self, consumer: str) -> "MessageQueueHandler":
         """
         a
         """
